@@ -4,7 +4,7 @@ const KEY = "3bab8c719a204ddfc61a21dcd1f89512";
 
 export default function App() {
   const [cities, setCities] = useState({});
-  const [query, setQuery] = useState("-");
+  const [query, setQuery] = useState("London");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Set initial state to true
 
