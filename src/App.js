@@ -15,8 +15,7 @@ export default function App() {
       try {
         setError("");
         const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${KEY}`,
-          { signal: controller.signal }
+          `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${KEY}`
         );
 
         if (!res.ok) {
@@ -58,7 +57,7 @@ export default function App() {
         <Weather cities={cities} />
       )}
 
-      {/* {error && <ErrorMessage message={error} />} */}
+      {error && <ErrorMessage message={error} />}
     </div>
   );
 }
@@ -67,18 +66,18 @@ function Loader() {
   return <p className="loader">Loading...</p>;
 }
 
-// function ErrorMessage({ message }) {
-//   return (
-//     <p className="error">
-//       <span>❌</span> {message}
-//     </p>
-//   );
-// }
+function ErrorMessage({ message }) {
+  return (
+    <p className="error">
+      <span>❌</span> {message}
+    </p>
+  );
+}
 
 function Header({ children }) {
   return (
     <div className="header">
-      <h3>Weather App</h3>
+      <h4>Enter the city:</h4>
       {children}
     </div>
   );

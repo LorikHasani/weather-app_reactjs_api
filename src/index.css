@@ -25,16 +25,19 @@ code {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: bisque;
-  width: 320px;
+  background-color: rgb(207, 203, 197);
+  width: 300px;
   border-radius: 10px;
+  margin-bottom: 50px;
+  padding: 0px 15px;
 }
 
 .search {
   border-radius: 20px;
   text-decoration: none;
   border: inherit;
-  height: 20px;
+  height: 30px;
+  background-color: rgb(247, 247, 247);
 }
 
 /*Temp card*/
