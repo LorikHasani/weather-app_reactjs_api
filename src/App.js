@@ -84,14 +84,14 @@ function Search({ query, setQuery }) {
 function Weather({ cities }) {
   const [isOpen, setIsOpen] = useState(true);
 
-  useEffect(function () {
-    if (!title) return;
-    document.title = `Movie | ${title}`;
+  useEffect(() => {
+    if (!cities.name) return;
+    document.title = `${cities.name} | Weather`;
 
     return function () {
       document.title = "London";
     };
-  }, []);
+  }, [cities.name]);
 
   return (
     <>
