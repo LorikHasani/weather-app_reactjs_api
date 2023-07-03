@@ -84,6 +84,15 @@ function Search({ query, setQuery }) {
 function Weather({ cities }) {
   const [isOpen, setIsOpen] = useState(true);
 
+  useEffect(function () {
+    if (!title) return;
+    document.title = `Movie | ${title}`;
+
+    return function () {
+      document.title = "London";
+    };
+  }, []);
+
   return (
     <>
       <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
