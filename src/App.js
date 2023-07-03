@@ -14,9 +14,7 @@ export default function App() {
     async function fetchWeather() {
       try {
         setError("");
-        const res = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${KEY}`
-        );
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${KEY}`);
 
         if (!res.ok) {
           throw new Error("Something went wrong with fetching city");
@@ -51,11 +49,7 @@ export default function App() {
       <Header>
         <Search query={query} setQuery={setQuery} />
       </Header>
-      {isLoading || Object.keys(cities).length === 0 ? (
-        <Loader />
-      ) : (
-        <Weather cities={cities} />
-      )}
+      {isLoading || Object.keys(cities).length === 0 ? <Loader /> : <Weather cities={cities} />}
 
       {error && <ErrorMessage message={error} />}
     </div>
@@ -84,27 +78,26 @@ function Header({ children }) {
 }
 
 function Search({ query, setQuery }) {
-  return (
-    <input
-      className="search"
-      type="text"
-      placeholder="Enter the city..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-    />
-  );
+  return <input className="search" type="text" placeholder="Enter the city..." value={query} onChange={(e) => setQuery(e.target.value)} />;
 }
 
 function Weather({ cities }) {
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-    <div className="cardContainer">
-      {cities.main && (
-        <div className="card">
-          <p className="city">{cities.name}</p>
-          <p className="city">{cities.main.temp} °F</p>
-          <p className="weather">{cities.weather[0].description}</p>
-        </div>
-      )}
-    </div>
+    <>
+      <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
+        {isOpen ? "–" : "+"}
+      </button>
+      <div className="cardContainer">
+        {isOpen && cities.main && (
+          <div className="card">
+            <p className="city">{cities.name}</p>
+            <p className="city">{cities.main.temp} °F</p>
+            <p className="weather">{cities.weather[0].description}</p>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
